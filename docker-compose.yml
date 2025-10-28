@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  # mysql:
+  #   image: mysql:8.0
+  #   environment:
+  #     MYSQL_DATABASE: eventdb
+  #     MYSQL_USER: root
+  #     MYSQL_PASSWORD: Jaas@123
+  #     MYSQL_ROOT_PASSWORD: root_pass
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  #   ports:
+  #     - "3306:3306"
+  #   healthcheck:
+  #     test: ["CMD","mysqladmin","ping","-h","localhost"]
+  #     interval: 10s
+  #     retries: 5
+
+  backend:
+    build: ./EMS_backend
+    # depends_on:
+    #   - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:testdb
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: 
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./EMS_frontend
+    depends_on:
+      - backend
+    ports:
+      - "4200:80"
+
+# volumes:
+#   mysql_data:
