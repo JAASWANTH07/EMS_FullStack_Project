@@ -27,8 +27,8 @@ jobs:
       - name: Build and push backend image
         uses: docker/build-push-action@v4
         with:
-          context: ./backend
-          file: ./backend/Dockerfile
+          context: ./EMS_backend
+          file:  ./EMS_backend/Dockerfile
           push: true
           tags: |
             jaaswanth07/ems-backend:latest
@@ -37,8 +37,8 @@ jobs:
       - name: Build and push frontend image
         uses: docker/build-push-action@v4
         with:
-          context: ./frontend
-          file: ./frontend/Dockerfile
+          context: ./EMS_frontend
+          file: ./EMS_frontend/Dockerfile
           push: true
           tags: |
             jaaswanth07/ems-frontend:latest
