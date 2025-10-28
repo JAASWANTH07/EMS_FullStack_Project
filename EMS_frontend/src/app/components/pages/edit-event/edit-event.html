@@ -1,0 +1,269 @@
+<div class="event-form-container  d-flex flex-column px-3 py-5">
+  <div class="row my-4 ">
+    <div class="col-auto">
+      <button
+        class="btn btn-back rounded-pill shadow px-4 py-2 d-inline-flex align-items-center gap-2 ms-2"
+        (click)="goBack()"
+      >
+        <i class="bi bi-arrow-left-circle" style="font-size: 1.28rem;"></i>
+        <span class="fw-medium">Back</span>
+      </button>
+    </div>
+  </div>
+    <div class="event-form-card shadow-lg rounded-5 mx-auto p-5 bg-white" style="max-width: 700px; width: 100%;">
+      <h2 class="mb-5 fw-bold text-center text-gradient">Edit Event</h2>
+      <form #editEventForm="ngForm" (ngSubmit)="handleSubmit(editEventForm)" novalidate autocomplete="off">
+  
+        <!-- Event Title -->
+        <div class="mb-4">
+          <label class="form-label">Event Title</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Event Title"
+            [(ngModel)]="event.eventTitle"
+            name="eventTitle"
+            required
+            minlength="3"
+            #eventTitle="ngModel"
+          />
+          <div *ngIf="eventTitle.invalid && (eventTitle.touched || editEventForm.submitted)">
+            <small class="text-danger" *ngIf="eventTitle.errors?.['required']">
+              <i class="bi bi-exclamation-circle me-1"></i>Event title is required.
+            </small>
+            <small class="text-danger" *ngIf="eventTitle.errors?.['minlength']">
+              <i class="bi bi-exclamation-circle me-1"></i>Minimum 3 characters.
+            </small>
+          </div>
+        </div>
+  
+        <!-- Event Description -->
+        <div class="mb-4">
+          <label class="form-label">Event Description</label>
+          <textarea
+            class="form-control"
+            rows="4"
+            placeholder="Describe your event"
+            [(ngModel)]="event.eventDescription"
+            name="eventDescription"
+            required
+            #eventDescription="ngModel"
+          ></textarea>
+          <div *ngIf="eventDescription.invalid && (eventDescription.touched || editEventForm.submitted)">
+            <small class="text-danger" *ngIf="eventDescription.errors?.['required']">
+              <i class="bi bi-exclamation-circle me-1"></i>Description is required.
+            </small>
+          </div>
+        </div>
+  
+        <!-- Category -->
+        <div class="mb-4">
+          <label class="form-label">Category</label>
+          <select
+            class="form-select"
+            [(ngModel)]="event.categoryId"
+            name="categoryId"
+            required
+            #category="ngModel"
+          >
+            <option value="" disabled>Select a category</option>
+            <option *ngFor="let category of allCategories" [value]="category.categoryId">{{category.categoryName}}</option>
+          </select>
+          <div *ngIf="category.invalid && (category.touched || editEventForm.submitted)">
+            <small class="text-danger">
+              <i class="bi bi-exclamation-circle me-1"></i>Category is required.
+            </small>
+          </div>
+        </div>
+  
+        <!-- Event Date -->
+        <div class="mb-4">
+          <label class="form-label">Event Date</label>
+          <input
+            type="date"
+            class="form-control"
+            name="eventDate"
+            [(ngModel)]="event.eventDate"
+            required
+            [min]="minDate"
+            #eventDate="ngModel"
+          />
+          <div *ngIf="eventDate.invalid && (eventDate.touched || editEventForm.submitted)">
+            <small class="text-danger" *ngIf="eventDate.errors?.['required']">
+              <i class="bi bi-exclamation-circle me-1"></i>Date is required.
+            </small>
+            <small class="text-danger" *ngIf="eventDate.errors?.['min']">
+              <i class="bi bi-exclamation-circle me-1"></i>Date cannot be before today.
+            </small>
+          </div>
+        </div>
+  
+        <!-- Start / End Time -->
+        <div class="mb-4 d-flex gap-3">
+          <div class="flex-fill">
+            <label class="form-label">Start Time</label>
+            <input
+              type="time"
+              class="form-control"
+              name="startTime"
+              [(ngModel)]="event.startTime"
+              required
+              #startTime="ngModel"
+            />
+            <div *ngIf="startTime.invalid && (startTime.touched || editEventForm.submitted)">
+              <small class="text-danger">
+                <i class="bi bi-exclamation-circle me-1"></i>Start time required.
+              </small>
+            </div>
+          </div>
+          <div class="flex-fill">
+            <label class="form-label">End Time</label>
+            <input
+              type="time"
+              class="form-control"
+              name="endTime"
+              [(ngModel)]="event.endTime"
+              required
+              #endTime="ngModel"
+            />
+            <div *ngIf="endTime.invalid && (endTime.touched || editEventForm.submitted)">
+              <small class="text-danger">
+                <i class="bi bi-exclamation-circle me-1"></i>End time required.
+              </small>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Location -->
+        <div class="mb-4">
+          <label class="form-label">Location</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Event Location"
+            [(ngModel)]="event.location"
+            name="location"
+            required
+            #location="ngModel"
+          />
+          <div *ngIf="location.invalid && (location.touched || editEventForm.submitted)">
+            <small class="text-danger">
+              <i class="bi bi-exclamation-circle me-1"></i>Location is required.
+            </small>
+          </div>
+        </div>
+  
+        <!-- Capacity -->
+        <div class="mb-4">
+          <label class="form-label">Capacity (Total Seats)</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Total Seats"
+            name="capacity"
+            [(ngModel)]="event.capacity"
+            required
+            min="20"
+            #capacity="ngModel"
+          />
+          <div *ngIf="capacity.invalid && (capacity.touched || editEventForm.submitted)">
+            <small class="text-danger" *ngIf="capacity.errors?.['required']">
+              <i class="bi bi-exclamation-circle me-1"></i>Capacity required.
+            </small>
+            <small class="text-danger" *ngIf="capacity.errors?.['min']">
+              <i class="bi bi-exclamation-circle me-1"></i>Must be at least 20.
+            </small>
+          </div>
+        </div>
+  
+        <!-- Age Limit -->
+        <div class="mb-4">
+          <label class="form-label">Age Limit</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Age Limit (e.g. 18)"
+            name="ageLimit"
+            [(ngModel)]="event.ageLimit"
+            required
+            min="0"
+            #ageLimit="ngModel"
+          />
+          <div *ngIf="ageLimit.invalid && (ageLimit.touched || editEventForm.submitted)">
+            <small class="text-danger" *ngIf="ageLimit.errors?.['required']">
+              <i class="bi bi-exclamation-circle me-1"></i>Age limit required.
+            </small>
+            <small class="text-danger" *ngIf="ageLimit.errors?.['min']">
+              <i class="bi bi-exclamation-circle me-1"></i>Cannot be negative.
+            </small>
+          </div>
+        </div>
+  
+        <!-- Artists -->
+        <div class="mb-4">
+          <label class="form-label">Artists / Speakers</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Artists or speakers (comma separated)"
+            name="artists"
+            [(ngModel)]="event.artists"
+            #artists="ngModel"
+          />
+        </div>
+  
+        <!-- Price -->
+        <div class="mb-4">
+          <label class="form-label">Ticket Price (INR)</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Ticket Price"
+            name="price"
+            [(ngModel)]="event.price"
+            required
+            min="0"
+            #price="ngModel"
+          />
+          <div *ngIf="price.invalid && (price.touched || editEventForm.submitted)">
+            <small class="text-danger" *ngIf="price.errors?.['required']">
+              <i class="bi bi-exclamation-circle me-1"></i>Price is required.
+            </small>
+            <small class="text-danger" *ngIf="price.errors?.['min']">
+              <i class="bi bi-exclamation-circle me-1"></i>Cannot be negative.
+            </small>
+          </div>
+        </div>
+  
+        <!-- Event Image -->
+        <div class="mb-4">
+          <label class="form-label">Event Image (URL)</label>
+          <input
+            type="url"
+            class="form-control"
+            placeholder="Image URL"
+            name="eventImage"
+            [(ngModel)]="event.eventImage"
+            required
+            #eventImage="ngModel"
+          />
+          <div *ngIf="eventImage.invalid && (eventImage.touched || editEventForm.submitted)">
+            <small class="text-danger" *ngIf="eventImage.errors?.['required']">
+              <i class="bi bi-exclamation-circle me-1"></i>Image URL required.
+            </small>
+          </div>
+        </div>
+  
+        <!-- Submit Button -->
+        <div class="mt-5">
+          <button class="btn btn-primary w-100 btn-lg rounded-pill fw-bold shadow"
+            [disabled]="editEventForm.invalid">
+            <i class="bi bi-save2 me-2"></i>Update Event
+          </button>
+        </div>
+      </form>
+    </div>
+    
+    <app-toast [message]="toastMessage" [show]="showToast"></app-toast>
+  </div>
+  

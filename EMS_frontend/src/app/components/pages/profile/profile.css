@@ -1,0 +1,92 @@
+.profile-page-wrapper {
+    background: linear-gradient(125deg, #e3f3ff 0%, #f8fbff 70%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .profile-card {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 6px 32px #88bfff2c;
+    padding: 2.4rem 2rem 2rem 2rem;
+    margin-top: 2.5rem;
+  }
+  .profile-avatar img {
+    border: 4px solid #e5f1ff;
+    box-shadow: 0 3px 14px #2d94ff2b;
+    background: linear-gradient(120deg,#b2d6ff 60%,#f2f8fc 120%);
+  }
+  .profile-username {
+    color: #212a3e;
+    font-size: 1.45rem;
+    letter-spacing: 0.04em;
+  }
+  .profile-details i.text-gradient-primary {
+    background: linear-gradient(90deg, #0d6efd 70%, #5a9cff 170%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.12rem;
+    vertical-align: middle;
+  }
+  .btn-gradient-primary {
+    background: linear-gradient(90deg,#0d6efd 60%,#5a9cff 120%);
+    color: #fff;
+    border: none;
+    transition: background 0.27s, box-shadow 0.27s;
+    box-shadow: 0 4px 12px #b7e8fa59;
+    font-size: 1.09rem;
+  }
+  .btn-gradient-primary:hover {
+    background: linear-gradient(90deg,#1857e9 60%,#68c2ff 120%);
+  }
+  .modal-content {
+    border-radius: 24px;
+    box-shadow: 0 8px 32px #2b488a37;
+  }
+  .modal-header {
+    border-radius: 24px 24px 0 0;
+  }
+  .text-gradient {
+    background: linear-gradient(90deg,#0d6efd 60%,#5a9cff 120%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .btn-outline-secondary {
+    border-color: #a9b8ce;
+    color: #56687e;
+    background: transparent;
+    transition: background 0.19s, color 0.19s;
+  }
+  .btn-outline-secondary:hover {
+    background: #f0f4ff;
+    color: #26334d;
+  }
+
+  .btn-back {
+    background: linear-gradient(90deg,#0d6efd 60%,#5a9cff 120%);
+    color: #fff;
+    border: none;
+    font-size: 1.08rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 14px #63bfff38;
+    transition: background 0.22s, box-shadow 0.22s, color 0.15s;
+  }
+  .btn-back:hover {
+    background: linear-gradient(90deg,#1452da 58%,#78baff 124%);
+    color: #ffe366;
+    box-shadow: 0 6px 18px #63bfff62;
+  }
+  .btn-back i {
+    margin-right: 0.25rem;
+    font-size: 1.32rem;
+    transition: color 0.14s;
+  }
+
+  
+  @media (max-width: 767px) {
+    .profile-card { padding: 1.5rem 0.7rem 1.3rem 0.7rem; }
+    .modal-content { border-radius: 12px; }
+  }
+  

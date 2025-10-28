@@ -1,0 +1,85 @@
+.category-form-container {
+  min-height: 92vh;
+  background: linear-gradient(120deg, #e3f3ff 45%, #e9fafd 100%);
+  display: flex;
+  flex-direction: column;      /* flex column as you have */
+  align-items: flex-start;     /* align items at the start (left) */
+  padding-top: 0 !important;   /* remove extra top padding if any */
+  padding-left: 1rem;          /* add some left padding */
+  padding-right: 1rem;         /* optional, for symmetry */
+  gap: 1.5rem; 
+  }
+  
+  .category-form-card {
+    border: 1.8px solid #f2f7fc;
+    box-shadow: 0 8px 28px #8ccdfa33, 0 2px 6px #63bfff17;
+  }
+  
+  .form-label {
+    font-weight: 600;
+    color: #184e97;
+  }
+  
+  input {
+    transition: border .18s, box-shadow .18s;
+  }
+  
+  input:focus {
+    box-shadow: 0 2px 18px #63bfff36;
+    border: 1.5px solid #0d6efd;
+  }
+  
+  input.ng-invalid.ng-touched {
+    border-color: #dc3545;
+    background: #fff6f8;
+  }
+  
+  .text-danger {
+    font-size: 0.96em;
+    margin-top: 1px;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(91deg,#0d6efd 52%,#5a9cff 110%);
+    border: none;
+    letter-spacing: 0.015em;
+    transition: background .18s, box-shadow .18s;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(91deg,#1871e7 38%,#69bfff 130%);
+    box-shadow: 0 4px 18px #60afff45;
+  }
+  
+
+
+  .btn-back {
+    background: linear-gradient(90deg, #0d6efd 60%, #5a9cff 120%);
+    color: #fff;
+    border: none;
+    font-size: 1.08rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 14px #63bfff38;
+    transition: background 0.22s, box-shadow 0.22s, color 0.15s;
+    display: inline-flex;       /* button width shrinks to content */
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 50rem;       /* pill shape */
+    margin-left: 0.5rem;        /* small left margin */
+  }
+  
+
+
+.btn-back:hover {
+  background: linear-gradient(90deg, #1452da 58%, #78baff 124%);
+  color: #ffe366;
+  box-shadow: 0 6px 18px #63bfff62;
+}
+
+.btn-back i {
+  font-size: 1.32rem;
+  transition: color 0.14s;
+  margin-right: 0.3rem;
+}
+

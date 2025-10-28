@@ -1,0 +1,9 @@
+<div class="toast-container d-flex" width="75%" *ngIf="show">
+    <div class="toast-message fw-semibold">
+      {{ message }}
+    </div>
+    <div>
+      <button class="close-btn" (click)="hideToast()">×</button>
+    </div>
+  </div>
+  

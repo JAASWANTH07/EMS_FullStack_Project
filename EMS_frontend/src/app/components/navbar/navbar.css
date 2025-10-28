@@ -1,0 +1,128 @@
+.navbar {
+    transition: all 0.3s ease-in-out;
+    border-bottom: 2px solid #e9ecef;
+  }
+  
+  .navbar.scrolled {
+    background-color: #f8f9fa !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .navbar-brand {
+    letter-spacing: 1px;
+  }
+  
+  .navbar .search-form input {
+    width: 300px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s;
+  }
+  
+  .navbar .search-form input:focus {
+    width: 400px;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+  }
+  
+  .navbar .search-form button {
+    transition: background 0.3s;
+  }
+  
+  .navbar .search-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .navbar .dropdown-menu {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .navbar img {
+    border: 2px solid #007bff;
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .navbar .search-form {
+      margin-top: 10px;
+      width: 100%;
+      justify-content: center;
+    }
+  
+    .navbar .search-form input {
+      width: 80%;
+    }
+  }
+
+  /* Avatar */
+.profile-avatar {
+    border: 2px solid #0d6efd;
+    transition: transform 0.3s ease, box-shadow 0.3s;
+  }
+  
+  .profile-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.2);
+  }
+  
+  /* Dropdown Animation */
+  .fade-in-menu {
+    animation: fadeInDropdown 0.25s ease-in-out;
+  }
+  
+  @keyframes fadeInDropdown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Dropdown Styling */
+  .dropdown-menu {
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    min-width: 200px;
+  }
+  
+  .dropdown-item {
+    transition: all 0.25s ease;
+    font-weight: 500;
+  }
+  
+  .dropdown-item i {
+    font-size: 1rem;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f6ff;
+    color: #0d6efd;
+    transform: translateX(3px);
+  }
+  
+  .dropdown-divider {
+    border-top: 1px solid #e9ecef;
+  }
+  
+  /* Profile Name Styling */
+  .nav-link span {
+    transition: color 0.2s ease;
+  }
+  
+  .nav-link:hover span {
+    color: #0d6efd;
+  }
+  
+  

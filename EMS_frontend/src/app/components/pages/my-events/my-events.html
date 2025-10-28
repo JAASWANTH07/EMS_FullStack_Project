@@ -1,0 +1,90 @@
+<section class="my-events-section py-4 mt-4">
+    <div class="container">
+      <div class="text-center mb-4">
+        <button
+  class="btn btn-back rounded-pill shadow px-4 py-2 d-flex align-items-center gap-2"
+  (click)="goBack()"
+>
+  <i class="bi bi-arrow-left-circle" style="font-size: 1.28rem;"></i>
+  <span class="fw-medium">Back</span>
+</button>
+
+        <h2 class="fw-bold text-dark mb-1">
+          <i class="bi bi-calendar3 text-primary me-2"></i>My Events
+        </h2>
+        <p class="text-muted fs-6">Events you have registered for</p>
+      </div>
+  
+      <div class="row g-3">
+        <div class="col-12 m-3" *ngFor="let registration of allRegistrations">
+          <div class="card event-row-card border-0 shadow-sm rounded-3 overflow-hidden">
+            <div class="row g-0 align-items-center">
+              <!-- Event Image -->
+              <div class="col-md-4">
+                <div class="image-container position-relative">
+                  <img [src]="registration.registeredEventDetails.eventImage" class="card-img event-img" alt="{{ registration.registeredEventDetails.eventTitle}}" />
+                  <div class="image-overlay"></div>
+                </div>
+              </div>
+              <!-- Event Details -->
+              <div class="col-md-8">
+                <div class="card-body py-3 px-4">
+                  <div class="row align-items-center">
+                    <div class="col-lg-9 col-md-8">
+                      <h4 class="fw-bold text-dark mb-2 fs-5">{{ registration.registeredEventDetails.eventTitle }}</h4>
+                      <p class="text-muted mb-2 fs-6">{{ registration.registeredEventDetails.eventDescription }}</p>
+                      <div class="row mb-2">
+                        <div class="col-sm-6">
+                          <p class="mb-1 text-secondary fs-6">
+                            <i class="bi bi-calendar-event me-2 text-primary"></i>
+                            <strong>Date:</strong> {{ registration.registeredEventDetails.eventDate| date: 'mediumDate' }}
+                          </p>
+                        </div>
+                        <div class="col-sm-6">
+                          <p class="mb-1 text-secondary fs-6">
+                            <i class="bi bi-geo-alt-fill me-2 text-danger"></i>
+                            <strong>Location:</strong> {{ registration.registeredEventDetails.location }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col-sm-6">
+                          <p class="mb-1 text-secondary fs-6">
+                            <i class="bi bi-clock me-2 text-success"></i>
+                            <strong>Time:</strong> {{ '1970-01-01T' + registration.registeredEventDetails.startTime | date:'shortTime':'UTC' }} -
+                            {{ '1970-01-01T' + registration.registeredEventDetails.endTime | date:'shortTime':'UTC' }}
+                          </p>
+                        </div>
+                        <div class="col-sm-6">
+                          <p class="mb-1 text-secondary fs-6">
+                            <i class="bi bi-people-fill me-2 text-info"></i>
+                            <strong>Seats Registered:</strong> {{ registration.totalTickets }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 text-lg-end text-center">
+                      <div class="total-price mb-2">
+                        <span class="fw-bold text-primary fs-4">
+                          {{ registration.totalPrice| currency: 'INR':'symbol':'1.0-0' }}
+                        </span>
+                        <small class="text-muted d-block fs-7 mt-1">Total Paid</small>
+                      </div>
+                      <a
+                        [routerLink]="['/home/event-details', registration.registeredEventDetails.eventId]"
+                        class="btn btn-outline-primary rounded-pill px-3 py-2 fw-semibold"
+                        style="font-size: 0.92rem;"
+                      >
+                        <i class="bi bi-eye me-2"></i>View Details
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

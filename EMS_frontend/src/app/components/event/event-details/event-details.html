@@ -1,0 +1,135 @@
+<section class="event-detail py-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Left: Event Image & Info -->
+      <div class="col-12 mb-3">
+        <button
+          class="btn btn-back rounded-pill shadow px-4 py-2 d-inline-flex align-items-center gap-2 ms-2"
+          (click)="goBack()"
+        >
+          <i class="bi bi-arrow-left-circle" style="font-size: 1.28rem;"></i>
+          <span class="fw-medium">Back</span>
+        </button>
+      </div>
+      <div class="col-lg-8">
+        <div class="event-image-wrapper shadow-sm rounded-4 overflow-hidden">
+          <img [src]="event?.eventImage" class="img-fluid hero-image" alt="{{ event?.eventTitle }}" />
+          <span class="category-badge">{{ event?.eventCategory?.categoryName }}</span>
+        </div>
+        <div class="mt-4">
+          <h2 class="fw-bold mb-3">{{ event?.eventTitle }}</h2>
+          <p class="lead text-muted">{{ event?.eventDescription }}</p>
+        </div>
+      </div>
+
+      <!-- Right: Info Card -->
+      <div class="col-lg-4">
+        <div class="card info-card border-0 shadow-lg rounded-4">
+          <div class="card-body">
+            <h5 class="card-title fw-semibold mb-3 text-primary">Event Details</h5>
+            <ul class="list-unstyled">
+              <li class="mb-3">
+                <i class="bi bi-calendar-event me-2 text-danger"></i>
+                <strong>Date:</strong> {{ event?.eventDate }}
+              </li>
+              <li class="mb-3">
+                <i class="bi bi-clock me-2 text-success"></i>
+                <strong>Time:</strong>
+                {{ startDate | date: 'shortTime' }} - {{ endDate | date: 'shortTime' }}
+              </li>
+              <li class="mb-3">
+                <i class="bi bi-person-fill-up me-2 text-secondary"></i>
+                <strong>Age Limit:</strong> {{ event?.ageLimit }}
+              </li>
+              <li class="mb-3">
+                <i class="bi bi-geo-alt-fill me-2 text-warning"></i>
+                <strong>Location:</strong> {{ event?.location }}
+              </li>
+              <li class="mb-3">
+                <i class="bi bi-cash-stack me-2 text-info"></i>
+                <strong>Price:</strong>
+                {{ event?.price | currency: 'INR':'symbol':'1.0-0' }}
+              </li>
+            </ul>
+
+            <!-- Button that triggers modal -->
+            <div class="text-center mt-4">
+              @if(event?.availableSeats !== 0)
+              {
+                <button
+                class="btn btn-gradient-primary px-4 py-2 rounded-pill fw-semibold"
+                (click)="openModal()"
+              >
+                <i class="bi bi-ticket-perforated me-2"></i>Register Now
+              </button>
+              }
+              @else
+              {
+                <button
+            class="btn btn-soldout px-4 py-2 rounded-pill fw-semibold"
+            disabled
+          >
+            <i class="bi bi-x-circle me-2"></i>Sold Out
+          </button>
+              }
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ↓↓↓ ADD YOUR MODAL HERE ↓↓↓ -->
+
+  <!-- Registration Modal -->
+  <div
+    class="modal show fade"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{ display: isModalOpen ? 'block' : 'none' }"
+    style="background: rgba(0, 0, 0, 0.6)"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-register">
+        <div class="modal-header">
+          <h5 class="modal-title fw-semibold">
+            <i class="bi bi-ticket-perforated me-2"></i>Select Tickets
+          </h5>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="d-flex align-items-center justify-content-center">
+            <button class="btn btn-outline-secondary btn-lg rounded-circle px-1" (click)="decrement()">
+              <i class="bi bi-dash"></i>
+            </button>
+            <span class="mx-4 fs-3 fw-bold">{{ ticketCount }}</span>
+            <button class="btn btn-outline-secondary btn-lg rounded-circle px-1" (click)="increment()">
+              <i class="bi bi-plus"></i>
+            </button>
+          </div>
+
+          <div class="text-center mt-3">
+            <span *ngIf="errorText" class="text-danger">{{ errorText }}</span>
+          </div>
+        </div>
+
+
+        <div class="modal-footer justify-content-center gap-3">
+          <button
+            class="btn btn-gradient-primary px-4 py-2 rounded-pill"
+            (click)="registerTickets()"
+          >
+            <i class="bi bi-check2-circle me-2"></i>Register
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- ↑↑↑ END OF MODAL ↑↑↑ -->
+
+
+  <app-toast [message]="toastMessage" [show]="showToast"></app-toast>
+</section>

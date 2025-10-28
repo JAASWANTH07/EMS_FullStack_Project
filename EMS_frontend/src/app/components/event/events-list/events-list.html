@@ -1,0 +1,23 @@
+@if (showEventsList()) {
+    <div>
+        <div>
+            <app-filters (filterDetails)="handleFilterDetails($event)"></app-filters>
+        </div>
+        
+        <section class="event-list py-5">
+            <div class="container">
+              <div class="row g-4">
+                <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let eachEvent of allEvents">
+                  <app-event-card [event]="eachEvent" (viewEventDetails)="handleViewDetails($event)"></app-event-card>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>    
+}
+
+<div class="mt-5">
+    <router-outlet></router-outlet>
+</div>
+
+  

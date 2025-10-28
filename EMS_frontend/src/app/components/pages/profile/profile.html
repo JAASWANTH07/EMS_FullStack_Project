@@ -1,0 +1,69 @@
+
+<div class="profile-page-wrapper pt-5 pb-5 mt-0">
+    <div class="container-xl">
+      <div class="row justify-content-center">
+        <div class="col-12 mb-3">
+            <button
+              class="btn btn-back rounded-pill shadow px-4 py-2 d-inline-flex align-items-center gap-2 ms-2"
+              (click)="goBack()"
+            >
+              <i class="bi bi-arrow-left-circle" style="font-size: 1.28rem;"></i>
+              <span class="fw-medium">Back</span>
+            </button>
+          </div>
+        <div class="col-md-7 col-lg-6">
+           
+          <div class="profile-card shadow-lg rounded-4 bg-white p-4 p-lg-5 text-center mx-auto">
+            <div class="profile-avatar mx-auto mb-3">
+              <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Profile Avatar" class="rounded-circle shadow" style="width:150px; height:150px; object-fit:cover;">
+            </div>
+            <h4 class="profile-username fw-bold mb-2">{{userProfile.userName}}</h4>
+            <div class="profile-details text-secondary mx-auto mb-4">
+              <div class="mb-2"><i class="bi bi-envelope-open me-2 text-gradient-primary"></i> {{userProfile.email}}</div>
+              <div><i class="bi bi-telephone me-2 text-gradient-primary"></i> {{userProfile.phone}}</div>
+            </div>
+            <button class="btn btn-gradient-primary btn-lg rounded-pill px-4 fw-semibold shadow" (click)="openEditModal()">
+              <i class="bi bi-pencil me-2"></i>Edit Profile
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Edit profile modal (example, modal implementation may vary) -->
+    <div *ngIf="showEditModal" class="modal fade show d-block" tabindex="-1" style="background: rgba(44,64,111,.09);">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 shadow-lg">
+          <div class="modal-header border-0 bg-light">
+            <h5 class="modal-title fw-bold text-gradient">Edit Profile</h5>
+            <button type="button" class="btn-close" (click)="closeEditModal()"></button>
+          </div>
+          <form (ngSubmit)="saveProfile()" #editProfileForm="ngForm">
+            <div class="modal-body p-4">
+              <div class="mb-3">
+                <label class="form-label">User Name</label>
+                <input type="text" class="form-control" [(ngModel)]="userProfile.userName" name="editUserName" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" [(ngModel)]="userProfile.email" name="editEmail" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="tel" class="form-control" [(ngModel)]="userProfile.phone" name="editPhone" required>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-center border-0">
+              <button class="btn btn-gradient-primary px-4 rounded-pill" type="submit">
+                <i class="bi bi-check2-circle me-2"></i>Save
+              </button>
+              <button class="btn btn-outline-secondary px-4 rounded-pill ms-2" type="button" (click)="closeEditModal()">
+                <i class="bi bi-x-circle me-2"></i>Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

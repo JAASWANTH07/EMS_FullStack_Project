@@ -1,0 +1,41 @@
+.event-form-container {
+    min-height: 92vh;
+    background: linear-gradient(120deg, #e3f3ff 45%, #e9fafd 100%);
+    display: flex;
+    flex-direction: column;      /* flex column as you have */
+    align-items: flex-start;     /* align items at the start (left) */
+    padding-top: 0 !important;   /* remove extra top padding if any */
+    padding-left: 1rem;          /* add some left padding */
+    padding-right: 1rem;         /* optional, for symmetry */
+    gap: 1.5rem;                 /* vertical spacing between children */
+  }
+  
+  .btn-back {
+    background: linear-gradient(90deg, #0d6efd 60%, #5a9cff 120%);
+    color: #fff;
+    border: none;
+    font-size: 1.08rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 14px #63bfff38;
+    transition: background 0.22s, box-shadow 0.22s, color 0.15s;
+    display: inline-flex;       /* button width shrinks to content */
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 50rem;       /* pill shape */
+    margin-left: 0.5rem;        /* small left margin */
+  }
+  
+
+
+.btn-back:hover {
+  background: linear-gradient(90deg, #1452da 58%, #78baff 124%);
+  color: #ffe366;
+  box-shadow: 0 6px 18px #63bfff62;
+}
+
+.btn-back i {
+  font-size: 1.32rem;
+  transition: color 0.14s;
+  margin-right: 0.3rem;
+}

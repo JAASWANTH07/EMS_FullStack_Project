@@ -1,0 +1,61 @@
+.filters-section {
+    border-radius: 0 0 15px 15px;
+    border-top: 2px solid #e9ecef;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .filter-group {
+    transition: transform 0.2s ease, box-shadow 0.2s ease-in-out;
+  }
+  
+  .filter-group:hover {
+    transform: translateY(-3px);
+  }
+  
+  .form-select,
+  .form-control {
+    border: 1px solid #dee2e6;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    transition: all 0.25s ease;
+  }
+  
+  .form-select:focus,
+  .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 6px rgba(13, 110, 253, 0.3);
+  }
+  
+  .btn-gradient-primary {
+    background: linear-gradient(90deg, #0d6efd 0%, #5a9cff 100%);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-gradient-primary:hover {
+    background: linear-gradient(90deg, #0b5ed7 0%, #3c8cff 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+  }
+  
+  .form-label {
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 992px) {
+    .filters-section {
+      padding: 1rem 1.5rem;
+    }
+  
+    .btn-gradient-primary {
+      width: 100%;
+      margin-top: 12px;
+    }
+  
+    .filter-group:hover {
+      transform: none;
+    }
+  }
+  

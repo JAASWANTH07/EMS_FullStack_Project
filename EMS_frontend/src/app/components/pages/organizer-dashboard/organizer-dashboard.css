@@ -1,0 +1,126 @@
+/* Avatar & Navbar Brand */
+.dashboard-avatar {
+    border: 2px solid #0d6efd;
+    transition: transform 0.28s;
+  }
+  .dashboard-avatar:hover {
+    transform: scale(1.08);
+  }
+  .text-gradient {
+    background: linear-gradient(90deg, #0d6efd 60%, #5a9cff 120%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Dropdown fade-in effect */
+  .fade-in-menu {
+    animation: fadeInDropdown 0.22s ease-in;
+  }
+  @keyframes fadeInDropdown {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* DASHBOARD CARDS */
+  .dashboard-card {
+    background: #fff;
+    border-radius: 20px;
+    border-left: 4px solid transparent;
+    box-shadow: 0px 4px 18px rgba(80, 112, 180, 0.08);
+    transition: box-shadow 0.27s, border-color 0.27s, transform 0.22s;
+    padding: 1.8rem 1.1rem;
+  }
+  .dashboard-card:hover,
+  .dashboard-card:focus {
+    transform: translateY(-5px) scale(1.025);
+    box-shadow: 0 8px 25px rgba(0, 80, 180, 0.16);
+    z-index: 2;
+  }
+  
+  /* Accent color by card type */
+  .new-event-card       { border-left-color: #0d6efd; }
+  .add-category-card    { border-left-color: #ffc107; }
+  .view-events-card     { border-left-color: #198754; }
+  .analytics-card       { border-left-color: #0dcaf0; }
+  
+  /* Icon disc styling */
+  .circle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 2.1rem;
+    background: #f6f9fd;
+    box-shadow: 0 1px 8px rgba(13, 110, 253, 0.04);
+    margin-bottom: 1rem;
+    transition: background 0.18s;
+  }
+  .new-event-card .circle-icon    { color: #0d6efd;   background: #e7effc; }
+  .add-category-card .circle-icon { color: #ffc107;   background: #fff7e4; }
+  .view-events-card .circle-icon  { color: #198754;   background: #e7fcee; }
+  .analytics-card .circle-icon    { color: #0dcaf0;   background: #e7f7fc; }
+  
+  /* Card header and text */
+  .dashboard-card h5 {
+    margin-bottom: 0.7rem;
+  }
+  .dashboard-card p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: #677080;
+  }
+  
+  /* Button styles for cards */
+  .btn-primary, .btn-warning, .btn-success, .btn-info {
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 100px;
+    box-shadow: 0 0.5rem 0.8rem rgba(80,112,180,0.06);
+    transition: background 0.22s, color 0.22s;
+  }
+  .btn-primary:hover, .btn-warning:hover, .btn-success:hover, .btn-info:hover {
+    filter: brightness(0.98);
+  }
+  
+  .btn {
+    padding: 0.46rem 1.4rem;
+    font-weight: 500;
+  }
+
+  .stats-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+  }
+  
+  .stats-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgb(0 0 0 / 0.1);
+  }
+  
+  .stats-icon {
+    width: 3.4rem;
+    height: 3.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 0.05);
+  }
+  
+  .stats-icon i {
+    font-size: 1.8rem;
+  }
+  
+  
+  @media (max-width: 1024px) {
+    .dashboard-card { padding: 1.3rem 0.75rem; }
+  }
+  @media (max-width: 767px) {
+    .dashboard-card { padding: 1rem 0.4rem; }
+    .circle-icon { width: 40px; height: 40px; font-size: 1.6rem; }
+  }
+  

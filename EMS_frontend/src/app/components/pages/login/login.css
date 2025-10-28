@@ -1,0 +1,49 @@
+.login-form-container {
+    min-height: 90vh;
+    background: linear-gradient(120deg,#e3f3ff 40%,#e9fafd 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-form-card {
+    border: 1.6px solid #f2f7fc;
+    box-shadow: 0 10px 38px #8ccdfa44, 0 3px 12px #63bfff22;
+  }
+  
+  .form-label {
+    font-weight: 600;
+    color: #184e97;
+  }
+  
+  input.form-control {
+    transition: border 0.18s, box-shadow 0.18s;
+  }
+  
+  input.form-control:focus {
+    box-shadow: 0 3px 22px #63bfff58;
+    border: 1.7px solid #0d6efd;
+  }
+  
+  input.ng-invalid.ng-touched {
+    border-color: #dc3545;
+    background: #fff6f8;
+  }
+  
+  .text-danger {
+    font-size: 0.95em;
+    margin-top: 2px;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(91deg,#0d6efd 52%,#5a9cff 110%);
+    border: none;
+    letter-spacing: 0.018em;
+    transition: background 0.22s, box-shadow 0.22s;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(91deg,#1871e7 38%,#69bfff 130%);
+    box-shadow: 0 6px 18px #60afff6e;
+  }
+  

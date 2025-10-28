@@ -1,0 +1,56 @@
+<div class="category-form-container px-3 py-5  d-flex flex-column">
+  <div class="row my-4 ">
+    <div class="col-auto">
+      <button
+        class="btn btn-back rounded-pill shadow px-4 py-2 d-inline-flex align-items-center gap-2 ms-2"
+        (click)="goBack()"
+      >
+        <i class="bi bi-arrow-left-circle" style="font-size: 1.28rem;"></i>
+        <span class="fw-medium">Back</span>
+      </button>
+    </div>
+  </div>
+    <div class="category-form-card shadow-lg rounded-5 mx-auto p-5 bg-white" style="max-width: 700px; width: 100%;">
+      <h2 class="mb-5 fw-bold text-center text-gradient">Add New Category</h2>
+  
+      <form #categoryForm="ngForm" (ngSubmit)="handleSubmit(categoryForm)" novalidate>
+  
+        <!-- Category Name -->
+        <div class="mb-4">
+          <label class="form-label">Category Name</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter category name"
+            name="categoryName"
+            [(ngModel)]="newCategory.categoryName"
+            required
+            minlength="3"
+            #categoryName="ngModel"
+          />
+          <div *ngIf="categoryName.invalid && (categoryName.touched || categoryForm.submitted)">
+            <small class="text-danger" *ngIf="categoryName.errors?.['required']">
+              <i class="bi bi-exclamation-circle me-1"></i>Category name is required.
+            </small>
+            <small class="text-danger" *ngIf="categoryName.errors?.['minlength']">
+              <i class="bi bi-exclamation-circle me-1"></i>Minimum 3 characters required.
+            </small>
+          </div>
+        </div>
+  
+        <!-- Submit Button -->
+        <div class="mt-5">
+          <button
+            class="btn btn-primary w-100 btn-lg rounded-pill fw-bold shadow"
+            [disabled]="categoryForm.invalid"
+            type="submit"
+          >
+            <i class="bi bi-save2 me-2"></i>Create Category
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <app-toast [message]="toastMessage" [show]="showToast"></app-toast>
+  </div>
+  

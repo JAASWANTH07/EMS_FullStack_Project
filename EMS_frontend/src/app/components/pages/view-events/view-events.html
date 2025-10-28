@@ -1,0 +1,103 @@
+@if(showEvents())
+{
+    <section class="view-events-table-dashboard py-4" style="background:#f8fafd;">
+        <div class="container-fluid px-lg-2 px-1">
+          <div class="row my-4 ">
+            <div class="col-auto">
+              <button
+                class="btn btn-back rounded-pill shadow px-4 py-2 d-inline-flex align-items-center gap-2 ms-2"
+                (click)="goBack()"
+              >
+                <i class="bi bi-arrow-left-circle" style="font-size: 1.28rem;"></i>
+                <span class="fw-medium">Back</span>
+              </button>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-end mb-4">
+            <h2 class="fw-bold text-dark mb-1">
+              <i class="bi bi-calendar2-week me-2 text-primary"></i>Manage Events
+            </h2>
+           
+          </div>
+          <div class="table-responsive shadow-sm rounded-4 bg-white">
+            <table class="table table-hover event-list-table align-middle m-0 w-100">
+              <thead>
+                <tr>
+                  <th class="text-center" style="width:170px;">Event</th>
+                  <th class="text-center">Name</th>
+                  <th class="text-center">Date</th>
+                  <th class="text-center">Time</th>
+                  <th class="text-center">Per Ticket Price</th>
+                  <th class="text-center">Attendees</th>
+                  <th class="text-center">Remaining Days</th>
+                  <th class="text-center">Revenue</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center" style="width:135px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let event of organizerAllEvents">
+                  <!-- Image with badge (category) -->
+                  <td class="p-0 align-middle">
+                    <div class="table-event-imgbox position-relative d-flex align-items-start justify-content-center">
+                      <img [src]="event.eventImage" class="event-img-lg rounded shadow t" [alt]="event.eventTitle" />
+                      <span class="event-cat-badge bg-primary text-white small px-3 py-1">
+                        {{ event.categoryName }}
+                      </span>
+                    </div>
+                  </td>
+                  <td class="align-middle fw-bold fs-6">{{ event.eventTitle }}</td>
+                  <td class="align-middle fw-semibold fs-6 text-center">{{ event.eventDate | date:'mediumDate' }}</td>
+                  <td class="align-middle fw-semibold fs-6 text-center">
+                    {{ '1970-01-01T' + event.startTime | date:'shortTime':'UTC' }} -
+                    {{ '1970-01-01T' + event.endTime | date:'shortTime':'UTC' }}
+                  </td>
+                  <td class="align-middle fw-semibold fs-6 text-success text-center">
+                    <i class="bi bi-currency-rupee"></i> {{event.price }}
+                  </td>
+                  <td class="align-middle fw-semibold fs-6 text-center">
+                    <i class="bi bi-people-fill text-info me-1 r"></i>{{ event.capacity - event.availableSeats }}
+                  </td>
+                  <td class="align-middle fw-semibold fs-6 text-center">
+                    <p *ngIf="getRemainingDaysForEvent(event.eventDate)">
+                        {{ getRemainingDaysForEvent(event.eventDate) }} days left
+                      </p>
+                      
+                  </td>
+                  <td class="align-middle fw-bold fs-6 text-success text-center">
+                    <i class="bi bi-currency-rupee"></i> {{event.price * (event.capacity - event.availableSeats)}}
+                  </td>
+                  <td class="align-middle text-center">
+                    <span [ngClass]="{
+                      'badge status-upcoming':  getEventStatus(event.eventDate)==='Upcoming',
+                      'badge status-ongoing':  getEventStatus(event.eventDate)==='Ongoing',
+                      'badge status-completed':  getEventStatus(event.eventDate)==='Completed',
+                    }" class="fs-6 px-3 py-2">
+                      {{ getEventStatus(event.eventDate) }}
+                    </span>
+                  </td>
+                  <td class="align-middle text-end pe-2">
+                    <div class="d-flex justify-content-end gap-1">
+                      <button class="btn btn-outline-info btn-action btn-action-sm" title="View Attendees">
+                        <i class="bi bi-person-lines-fill"></i>
+                      </button>
+                      <a class="btn btn-outline-primary btn-action btn-action-sm" [routerLink]="['/organizer-dashboard/edit-event',event.eventId]" title="Edit">
+                        <i class="bi bi-pencil"></i>
+                      </a>
+                      <button class="btn btn-outline-danger btn-action btn-action-sm" title="Delete">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      
+}
+
+<div>
+    <router-outlet></router-outlet>
+</div>
