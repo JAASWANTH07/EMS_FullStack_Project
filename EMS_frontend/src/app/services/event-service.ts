@@ -8,7 +8,7 @@ import Registration from '../models/registration.model';
   providedIn: 'root'
 })
 export class EventService {
-  baseUrl: string = 'http://localhost:8080/api/ems/events';
+  baseUrl: string = `http://${window.location.hostname}/api/ems/events`;
 
   constructor(private httpClient:HttpClient) {};
 

@@ -4,5 +4,5 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RegistrationService {
-  baseUrl: string = 'http://localhost:8080/api/ems/registrations';
+  baseUrl: string = `http://${window.location.hostname}/api/ems/registrations`;
 }

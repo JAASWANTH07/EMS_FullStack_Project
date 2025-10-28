@@ -8,7 +8,7 @@ import UserResponse from '../models/user-response';
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl: string = 'http://localhost:8080/api/ems/users';
+  baseUrl: string = `http://${window.location.hostname}/api/ems/users`;
 
   constructor(private httpClient:HttpClient) {};
 

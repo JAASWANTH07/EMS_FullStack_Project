@@ -7,7 +7,7 @@ import Category from '../models/category.model';
   providedIn: 'root'
 })
 export class CategoryService {
-  baseUrl: string = 'http://localhost:8080/api/ems/categories';
+  baseUrl: string = `http://${window.location.hostname}/api/ems/categories`;
 
   constructor(private httpClient:HttpClient) {};
 
